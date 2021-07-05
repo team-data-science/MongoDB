@@ -9,7 +9,7 @@ mycol = mydb["testcol"] # select the collection
 # Function to insert single document
 def delete_single():
    # create a dummy document
-    mydict = { "address": "Appartement 45" }
+    mydict = { "Cusomter_id": "A85123" }
 
     # delete one document to the collection, if there are MULTIPLE ones it only deletes ONE
     x = mycol.delete_one(mydict)

@@ -9,7 +9,7 @@ mycol = mydb["testcol"] # select the collection
 # Function to insert single document
 def insert_single():
    # create a dummy document
-    mydict = { "name": "Herbert", "address": "Highway 37" }
+    mydict = { "Cusomter_id": "A85123", "Country": "UK" }
 
     # write the document to the collection
     x = mycol.insert_one(mydict)
@@ -18,7 +18,7 @@ def insert_single():
     print(x.inserted_id) 
 
 # insert single document
-# insert_single()
+#insert_single()
 
 
 # Function to insert multiple documents at once
@@ -26,8 +26,8 @@ def insert_multiple():
    # create a dummy document
     mylist = []
 
-    mylist.append({ "name": "Andreas", "address": "Appartement 45" })
-    mylist.append({ "name": "Manuela", "address": "Appartement 45" })
+    mylist.append({ "Cusomter_id": "B85123", "Country": "DE" })
+    mylist.append({ "Cusomter_id": "C85123", "Country": "US" })
 
     # write the document to the collection
     x = mycol.insert_many(mylist)

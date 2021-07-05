@@ -13,8 +13,10 @@ def insert_multiple():
    # create a dummy document
     mylist = []
 
-    mylist.append({ "name": "Andreas", "address": "Appartement 45", "garage": {"car1" : "Audi", "car2":"BMW"} })
-    mylist.append({ "name": "Manuely", "address": "Appartement 45", "garage": {"car1" : "BMW", "car2":"VW"} })
+    mylist.append({ "Cusomter_id": "15311", "Country": "US", "simple_order_items": {"StockCode":"21791","UnitPrice":0.65, "Description":"STARS GIFT TAPE" ,"Quantity" : 3} })
+    mylist.append({ "Cusomter_id": "14527", "Country": "US", "simple_order_items": {"StockCode":"21792","UnitPrice":2.95, "Description":"WHITE METAL LANTERN" ,"Quantity" : 1} })
+
+
 
     # write the document to the collection
     x = mycol.insert_many(mylist)
@@ -22,11 +24,11 @@ def insert_multiple():
     # this is the id field of the new document
     print(x.inserted_ids) 
 
-insert_multiple()
+#insert_multiple()
 
 def query_sub_document():
-    # find these documents where the car1 in garage is an Audi
-    myquery = {"garage.car1": "Audi"}
+    # find these documents where the StockCode is 21791
+    myquery = {"simple_order_items.StockCode": "21791"}
     mydoc = mycol.find( myquery)
 
     # return only specific parts of the document
@@ -37,13 +39,13 @@ def query_sub_document():
     for x in mydoc:
         print(x)
 
-query_sub_document()
+#query_sub_document()
 
 
-# add a car to a garage attributes of a document
+# add a stock code to the sub document
 def update_sub_document():
-    myquery = { "name": "Andreas", "address": "Appartement 45"}
-    newvalues = { "$set": { "garage.car3": "Porsche" } }
+    myquery = { "Cusomter_id": "15311"}
+    newvalues = { "$set": { "simple_order_items.StockCode": "22778" } }
 
     x = mycol.update_one(myquery, newvalues)   
 

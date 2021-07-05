@@ -13,7 +13,7 @@ mycol = mydb["testcol"] # select the collection
 def insert_array():
    # create a dummy document
 
-    myquery = { "name": "Sebastian", "address": "Appartement 45", "garage": [{"car" : "Audi", "model":"A4"},{"car" : "BMW", "model":"3 Series"} ]}
+    myquery = {"Cusomter_id": "C84029", "complex_order_items": [{"StockCode" : "22622", "UnitPrice":0.65, "Description":"STARS GIFT TAPE" ,"Quantity" : 3},{"StockCode" : "22326", "UnitPrice":2.95, "Description":"WHITE METAL LANTERN" ,"Quantity" : 1} ]}
 
 
     # write the document to the collection
@@ -22,22 +22,22 @@ def insert_array():
     # this is the id field of the new document
     print(x.inserted_id) 
 
-insert_array()
+#insert_array()
 
-def query_subdocument():
-    # find these documents where the car1 in garage is an Audi
-    myquery = {"garage.car": "Audi"}
+def query_by_subdocument():
+    # find these documents where the StockCode is 22622
+    myquery = {"complex_order_items.StockCode": "22622"}
     mydoc = mycol.find( myquery)
 
     #print out doucument
     for x in mydoc:
         print(x)
 
-query_subdocument()
+#query_by_subdocument()
 
-def add_object_to_array():
-    myquery =  {"name": "Sebastian"}
-    newcar = { "$push": {"garage": {"car" : "Porsche", "model":"Cayman"}} }
+def add_subdocument_to_array():
+    myquery =  {"Cusomter_id": "C84029"}
+    newcar = { "$push": {"complex_order_items": {"StockCode" : "22637", "UnitPrice":2.55, "Description":"PIGGY BANK RETROSPOT" ,"Quantity" : 2  }} }
 
     x = mycol.update_one(myquery,newcar)
 
@@ -46,4 +46,4 @@ def add_object_to_array():
     for x in mycol.find():
         print(x) 
 
-add_object_to_array()
+add_subdocument_to_array()
