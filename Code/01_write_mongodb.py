@@ -29,7 +29,7 @@ def insert_multiple():
     mylist.append({ "Cusomter_id": "B85123", "Country": "DE" })
     mylist.append({ "Cusomter_id": "C85123", "Country": "US" })
 
-    # write the document to the collection
+    # write the documents to the collection
     x = mycol.insert_many(mylist)
 
     # this is the id field of the new document

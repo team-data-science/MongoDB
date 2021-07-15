@@ -43,7 +43,7 @@ def add_subdocument_to_array():
 
     print( x.matched_count , "updated")
 
-    for x in mycol.find():
+    for x in mycol.find(myquery):
         print(x) 
 
-#add_subdocument_to_array()
+add_subdocument_to_array()
