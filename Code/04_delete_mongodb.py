@@ -6,9 +6,9 @@ myclient = pymongo.MongoClient("mongodb://localhost:27017/",username='root',pass
 mydb = myclient["test"] # select the database
 mycol = mydb["testcol"] # select the collection
 
-# Function to insert single document
+# Function to delete a single document
 def delete_single():
-   # create a dummy document
+   # find the document
     mydict = { "Cusomter_id": "A85123" }
 
     # delete one document to the collection, if there are MULTIPLE ones it only deletes ONE

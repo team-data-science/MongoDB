@@ -42,7 +42,7 @@ def query_sub_document():
 #query_sub_document()
 
 
-# add a stock code to the sub document
+# update a stock code of a sub document
 def update_sub_document():
     myquery = { "Cusomter_id": "15311"}
     newvalues = { "$set": { "simple_order_items.StockCode": "22778" } }

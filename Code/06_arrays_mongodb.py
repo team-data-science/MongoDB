@@ -46,4 +46,4 @@ def add_subdocument_to_array():
     for x in mycol.find():
         print(x) 
 
-add_subdocument_to_array()
+#add_subdocument_to_array()
