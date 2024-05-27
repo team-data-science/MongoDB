@@ -1,11 +1,11 @@
-version: '3.1'
+version: '3.8'
 
 services:
 
   mongo:
     container_name: mongo-dev
-    image: mongo
-    volumes:
+    image: mongo:4.4.6
+    volumes: 
       - ~/dockerdata/mongodb:/data/db    
     restart: on-failure
     ports:
@@ -18,8 +18,8 @@ services:
       - my-mongo
 
   mongo-express:
-    image: mongo-express
-    restart: on-failure
+    image: mongo-express:1.0.0-alpha.4
+    restart: unless-stopped
     ports:
       - "8081:8081"
     environment:
@@ -32,6 +32,7 @@ services:
       - my-mongo
     depends_on:
       - mongo
+
 networks:
   my-mongo:
     driver: bridge
